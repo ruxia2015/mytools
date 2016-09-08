@@ -9,6 +9,8 @@ import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 
+import com.ruxia.tools.testunit.model.TestUnitConstant;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -21,7 +23,8 @@ import com.ruxia.tools.testunit.utils.PropertiesUtil;
 
 @Service
 public class TestUnitManagerService {
-    public static final String ROOT_PATH = "d:/_testFiles";
+    @Value("${testunit.root.path}")
+    public static  String ROOT_PATH = "d:/_testFiles";
     public static Map<String, TestUnitModel> testUnitModelMap = new HashMap<>();
 
     Logger logger = Logger.getLogger(TestUnitManagerService.class.getName());
@@ -30,6 +33,7 @@ public class TestUnitManagerService {
     public void init() {
         logger.info("加载文件。。。");
         loadTestUnitMode(null);
+        TestUnitConstant.ROOT_PATH = ROOT_PATH;
     }
     
     public void loadTestUnitMode(File file) {

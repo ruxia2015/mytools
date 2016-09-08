@@ -55,7 +55,7 @@ public class TestUnitController {
             ModelMap modelMap) {
         FileModel fileModel = ShowMenuController.fileModelMap.get(uuid);
         if (fileModel != null) {
-            String fileRealPath = fileModel.getFilePath();
+            String fileRealPath = fileModel.getFileFullPath();
             Properties properties = PropertiesUtil.getProperties(fileRealPath);
             TestUnitModel testUnitModel = TestUnitModel
                     .getByProperties(properties);

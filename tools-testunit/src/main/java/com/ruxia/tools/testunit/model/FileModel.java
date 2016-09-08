@@ -8,8 +8,19 @@ import java.util.List;
  */
 public class FileModel {
     private File file;
-    private String fileRealName;
+    /**
+     * 没有文件后缀的文件名称
+     */
+    private String fileSimpleName;
+
+    /**
+     * 文件名称，包含后缀
+     */
     private String fileName;
+
+    /**
+     * 子文件列表
+     */
     private List<FileModel> childFileModels;
     private boolean isFolder;
 
@@ -17,10 +28,20 @@ public class FileModel {
      * 相对路径
      */
     private String parentRelativePath;
-    private String uuid;
-    private String parentUuid;
 
-    private String filePath;
+    /**
+     * 文件唯一标示
+     */
+    private String uuid;
+
+    /**
+     * 父级文件标示
+     */
+    private String parentUuid;
+    /**
+     * 文件全路径
+     */
+    private String fileFullPath;
 
 
 
@@ -42,12 +63,12 @@ public class FileModel {
     }
 
 
-    public String getFileRealName() {
-        return fileRealName;
+    public String getFileName() {
+        return fileName;
     }
 
-    public void setFileRealName(String fileRealName) {
-        this.fileRealName = fileRealName;
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
 
@@ -60,12 +81,12 @@ public class FileModel {
         this.parentRelativePath = parentRelativePath;
     }
 
-    public String getFilePath() {
-        return filePath;
+    public String getFileFullPath() {
+        return fileFullPath;
     }
 
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
+    public void setFileFullPath(String fileFullPath) {
+        this.fileFullPath = fileFullPath;
     }
 
     public String getUuid() {
@@ -76,12 +97,12 @@ public class FileModel {
         this.uuid = uuid;
     }
 
-    public String getFileName() {
-        return fileName;
+    public String getFileSimpleName() {
+        return fileSimpleName;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public void setFileSimpleName(String fileSimpleName) {
+        this.fileSimpleName = fileSimpleName;
     }
 
     public List<FileModel> getChildFileModels() {

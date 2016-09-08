@@ -11,11 +11,20 @@ public class TestUnitModel {
     private String parentPath;
     
     private String name;
-    
+
+    /**
+     * 请求的服务端
+     */
     private String requestServer;
-    
+
+    /**
+     * 路径
+     */
     private String requestPath;
-    
+
+    /**
+     * 发送报文
+     */
     private String requestDatagram;
     
     private String lastResponseDatagram;

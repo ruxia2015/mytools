@@ -21,15 +21,6 @@ public class ShowMenuController {
     
     private String root_path = TestUnitManagerService.ROOT_PATH;
     
-    public static void main(String[] args) {
-        File file = new File("D:\\develop\\yufex-wtp\\1.txt");
-        File rootFile = new File("d:\\develop");
-        
-        System.out.println(file.getAbsolutePath());
-        System.out.println(file.getPath());
-        System.out.println(rootFile.getAbsoluteFile());
-    }
-    
     /**
      *
      * @return
@@ -60,23 +51,24 @@ public class ShowMenuController {
         FileModel fileModel = new FileModel();
         fileModel.setFile(file);
         
-        String uuid = null;
+        String  uuid = UUID.randomUUID().toString();
         
         if (file.isDirectory()) {
-            fileModel.setFileName(file.getName());
+            fileModel.setFileSimpleName(file.getName());
         } else {
             String filename = file.getName();
-            fileModel.setFileRealName(filename);
-            filename = filename.substring(0, filename.lastIndexOf("."));
             fileModel.setFileName(filename);
+            filename = filename.substring(0, filename.lastIndexOf("."));
+            fileModel.setFileSimpleName(filename);
             uuid = UUID.randomUUID().toString();
-            fileModel.setFilePath(file.getPath());
+            fileModel.setFileFullPath(file.getPath());
             fileModel.setParentUuid(uuid);
             
             String parentPath = file.getParent();
             fileModel.setParentRelativePath(parentPath
                     .substring(TestUnitManagerService.ROOT_PATH.length()));
             fileModel.setUuid(uuid);
+            fileModel.setParentUuid(parentUuid);
             fileModelMap.put(uuid, fileModel);
         }
         fileModel.setIsFolder(file.isDirectory());

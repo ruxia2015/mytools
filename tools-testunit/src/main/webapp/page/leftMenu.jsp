@@ -16,14 +16,14 @@
 
 <div class="list-group" style="text-align: left">
     <c:forEach items="${fileModels}" var="fileModel" varStatus="oneS">
-    <a class="list-group-item" href="#two_${oneS.index}" data-toggle="collapse" aria-expanded="true" style="text-align: left">${fileModel.fileName}</a>
+    <a class="list-group-item" href="#two_${oneS.index}" data-toggle="collapse" aria-expanded="true" style="text-align: left">${fileModel.fileSimpleName}</a>
     <div class="list-group collapse" id="two_${oneS.index}" >
         <c:forEach items="${fileModel.childFileModels}" var="twoFileModel" varStatus="twoS">
-        <a class="list-group-item "   href="#three_${oneS.index}_${twoS.index}" data-toggle="collapse" style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;——  ${twoFileModel.fileName}</a>
+        <a class="list-group-item "   href="#three_${oneS.index}_${twoS.index}" data-toggle="collapse" style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;——  ${twoFileModel.fileSimpleName}</a>
 
         <div class="list-group collapse " id="three_${oneS.index}_${twoS.index}">
             <c:forEach items="${twoFileModel.childFileModels}" var="threeFileModel" varStatus="threes">
-             <a class="list-group-item" href="#" style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——  ${twoFileModel.fileName}${threeFileModel.fileName}&nbsp;&nbsp;</a>
+             <a class="list-group-item" href="#" style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——  ${twoFileModel.fileSimpleName}${threeFileModel.fileSimpleName}&nbsp;&nbsp;</a>
             </c:forEach>
         </div>
        </c:forEach>
@@ -41,7 +41,7 @@
             <a href="#" class="list-group-item list-group-item-danger">Vestibulum at eros</a>
         </div>
         <a class="list-group-item list-group-item-success " data-toggle="collapse" href="#menu_two_${oneS.index}" aria-expanded="true">
-                ${fileModel.fileName}
+                ${fileModel.fileSimpleName}
         </a>
 
         <div class="collapse" id="menu_two_${oneS.index}">
@@ -49,19 +49,19 @@
                 <c:if test="${twoFileModel.folder}">
                     <a class="btn btn-info list-group-item" data-toggle="collapse" href="#menu_three_${oneS.index}_${twoS.index}"
                        aria-expanded="false">
-                            ${twoFileModel.fileName}
+                            ${twoFileModel.fileSimpleName}
                     </a>
                     <div class="collapse" id="#menu_three_${oneS.index}_${twoS.index}">
                         <c:forEach items="${twoFileModel.childFileModels}" var="threeFileModel" varStatus="threes">
                             <a class="btn btn-success-outline list-group-item">
-                                    ${threeFileModel.fileName}
+                                    ${threeFileModel.fileSimpleName}
                             </a>
                         </c:forEach>
                     </div>
                 </c:if>
                 <c:if test="${!twoFileModel.folder}">
                     <a class="btn btn-success-outline list-group-item">
-                            ${twoFileModel.fileName}
+                            ${twoFileModel.fileSimpleName}
                     </a>
                 </c:if>
             </c:forEach>
@@ -69,7 +69,7 @@
     </c:if>
     <c:if test="${!fileModel.folder}">
         <a class="btn btn-success-outline">
-                ${fileModel.fileName}
+                ${fileModel.fileSimpleName}
         </a>
     </c:if>
 

@@ -34,6 +34,32 @@ public class TestUnitManagerController {
                 .getFolderDirectorys();
         
     }
+
+    @RequestMapping("toUpdateGlobalTestUnit")
+    public String toUpdateGlobalTestUnit(){
+
+
+        return "updateGlobalTestUnit";
+    }
+
+    @ResponseBody
+    @RequestMapping("updateGlobalTestUnit")
+    public String updateGlobalTestUnit(
+            @RequestParam(value = "rootPath", required = false) String rootPath){
+        if(rootPath==null){
+            rootPath = TestUnitManagerService.ROOT_PATH;
+        }else{
+            rootPath = TestUnitManagerService.ROOT_PATH + "/"+rootPath;
+        }
+
+        File file = new File(rootPath);
+        if(file.isDirectory()){
+
+        }
+        return "updateGlobalTestUnit";
+    }
+
+
     
     @ResponseBody
     @RequestMapping("addFolder")
@@ -74,7 +100,7 @@ public class TestUnitManagerController {
         if (uuid != null) {
             FileModel fileModel = ShowMenuController.fileModelMap.get(uuid);
             if (fileModel != null) {
-                String fileRealPath = fileModel.getFilePath();
+                String fileRealPath = fileModel.getFileFullPath();
                 Properties properties = PropertiesUtil
                         .getProperties(fileRealPath);
                 testUnitModel = TestUnitModel.getByProperties(properties);
@@ -100,11 +126,11 @@ public class TestUnitManagerController {
         if (uuid != null) {
              fileModel = ShowMenuController.fileModelMap.get(uuid);
             if (fileModel != null) {
-                String fileRealPath = fileModel.getFilePath();
+                String fileRealPath = fileModel.getFileFullPath();
                 Properties properties = PropertiesUtil
                         .getProperties(fileRealPath);
                 testUnitModel = TestUnitModel.getByProperties(properties);
-                testUnitModel.setName(fileModel.getFileName());
+                testUnitModel.setName(fileModel.getFileSimpleName());
             }
         }
         Map<String, List<String>> folderDirectorys = getFolderDirectorys();

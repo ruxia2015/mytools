@@ -97,21 +97,21 @@
         var html = "<div class=\"list-group\" style=\"text-align: left\">";
         for (var one in data) {
             var oneFileModel = data[one];
-            html = html + "<a  id=\"one_"+one+"\" class=\"list-group-item\" href=\"#two_" + one + "\" data-toggle=\"collapse\" aria-expanded=\"true\" style=\"text-align: left\">" + oneFileModel.fileName + "</a>";
+            html = html + "<a  id=\"one_"+one+"\" class=\"list-group-item\" href=\"#two_" + one + "\" data-toggle=\"collapse\" aria-expanded=\"true\" style=\"text-align: left\">" + oneFileModel.fileSimpleName + "</a>";
             html = html + "<div class=\"list-group collapse\" id=\"two_" + one + "\" >";
             var twoHtml = "";
 
             for (var two in oneFileModel.childFileModels) {
                 var twoFileModel = oneFileModel.childFileModels[two];
                 if(twoFileModel.folder){
-                    twoHtml = twoHtml + "  <a class=\"list-group-item \"   href=\"#three_"+one+"_"+two+"\" data-toggle=\"collapse\" style=\"text-align: left\">&nbsp;&nbsp;&nbsp;&nbsp;+ &nbsp;" + twoFileModel.fileName + "</a>" ;
+                    twoHtml = twoHtml + "  <a class=\"list-group-item \"   href=\"#three_"+one+"_"+two+"\" data-toggle=\"collapse\" style=\"text-align: left\">&nbsp;&nbsp;&nbsp;&nbsp;+ &nbsp;" + twoFileModel.fileSimpleName + "</a>" ;
                 }else{
-                    twoHtml = twoHtml + "  <a id=\"a_"+twoFileModel.uuid+"\"  class=\"list-group-item \"   href=\"javascript:openTabFun('"+twoFileModel.fileName+"','"+twoFileModel.uuid+"')\"   style=\"text-align: left\">&nbsp;&nbsp;&nbsp;&nbsp;->" + twoFileModel.fileName + "</a>" ;
+                    twoHtml = twoHtml + "  <a id=\"a_"+twoFileModel.uuid+"\"  class=\"list-group-item \"   href=\"javascript:openTabFun('"+twoFileModel.fileSimpleName+"','"+twoFileModel.uuid+"')\"   style=\"text-align: left\">&nbsp;&nbsp;&nbsp;&nbsp;->" + twoFileModel.fileSimpleName + "</a>" ;
                 }
                                twoHtml = twoHtml +        "        <div class=\"list-group collapse \" id=\"three_"+one+"_"+two+"\" >";
                 for (var three in twoFileModel.childFileModels) {
                     var threeFileModel = twoFileModel.childFileModels[three];
-                    twoHtml = twoHtml + "<a  id=\"a_"+threeFileModel.uuid+"\" class=\"list-group-item\" href=\"javascript:openTabFun('"+threeFileModel.fileName+"','"+threeFileModel.uuid+"')\" style=\"text-align: left\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> " + threeFileModel.fileName + "&nbsp;&nbsp;</a>" ;
+                    twoHtml = twoHtml + "<a  id=\"a_"+threeFileModel.uuid+"\" class=\"list-group-item\" href=\"javascript:openTabFun('"+threeFileModel.fileSimpleName+"','"+threeFileModel.uuid+"')\" style=\"text-align: left\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> " + threeFileModel.fileSimpleName + "&nbsp;&nbsp;</a>" ;
 
                 }
                 twoHtml = twoHtml + "</div>";

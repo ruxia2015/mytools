@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ruxia-testunit.iml" filepath="$PROJECT_DIR$/ruxia-testunit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tools-testunit/tools-testunit.iml" filepath="$PROJECT_DIR$/tools-testunit/tools-testunit.iml" />
+    </modules>
+  </component>
+</project>
